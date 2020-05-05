@@ -1,0 +1,2 @@
+# PHPLint.novaextension
+PHPLint.novaextension
