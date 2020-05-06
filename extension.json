@@ -1,0 +1,26 @@
+{
+    "identifier": "vinecode.PHPLint",
+    "name": "PHPLint",
+    "vendor": "Vine Code Limited",
+    "description": "Identifies PHP syntax errors.",
+    "version": "0.1",
+    "categories": ["issues"],
+    "repository": "https://github.com/vinecode/PHPLint.novaextension",
+    "bugs": "https://github.com/vinecode/PHPLint.novaextension/issues",    
+    "main": "main.js",
+    "activationEvents": [
+        "onLanguage:php"
+    ],
+    "entitlements": {
+        "process": true
+    },
+    "config": [
+        {
+            "key": "VineCode.PHPLint.execPath",
+            "title": "Executable Path",
+            "type": "path",
+            "description": "Manually set the path for the php executable.",
+            "placeholder": "/usr/bin/php" 
+        } 
+    ]
+}
