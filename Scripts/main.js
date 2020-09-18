@@ -18,7 +18,7 @@ class IssuesProvider {
               execPath = 'php';
             }   
             
-            execPath.replace(/(\s+)/g, '\\$1');       
+            execPath = execPath.replace(/(\s+)/g, '\\$1');       
 
             const options = {
                 args: [
