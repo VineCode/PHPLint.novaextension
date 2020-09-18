@@ -1,9 +1,9 @@
 {
     "identifier": "vinecode.PHPLint",
     "name": "PHPLint",
-    "vendor": "Vine Code Limited",
+    "organization": "Vine Code Limited",
     "description": "Identifies PHP syntax errors.",
-    "version": "0.1",
+    "version": "0.3",
     "categories": ["issues"],
     "repository": "https://github.com/vinecode/PHPLint.novaextension",
     "bugs": "https://github.com/vinecode/PHPLint.novaextension/issues",    

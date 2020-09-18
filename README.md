@@ -1,6 +1,6 @@
 # PHP Lint Extension for Nova
 
-Runs PHP Lint on .php files and repots any errors in the Issues sidebar.
+Runs PHP Lint and reports any errors in the Issues sidebar.
 
 ## Requirements
 

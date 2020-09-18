@@ -12,12 +12,13 @@ class IssuesProvider {
             const issues = [];
             
             var path = editor.document.path;
-
             var execPath = nova.config.get('VineCode.PHPLint.execPath');
             
             if(!execPath) {
               execPath = 'php';
-            }                
+            }   
+            
+            execPath.replace(/(\s+)/g, '\\$1');       
 
             const options = {
                 args: [
@@ -38,24 +39,30 @@ class IssuesProvider {
                 
                 // Check if this is OK
                 if(stdOut[0].search('No syntax errors') !== -1) {
-                    resolve(issues);
+                    resolve();
                     return false;
-                }                
+                }      
+                
+                console.log(stdOut);          
             
-                const regex = /line ([0-9]+)$/g;
-                const found = regex.exec(stdOut[1]); //stdOut[1].matchAll(regex);
-
-                var message = stdOut[1];
-                message = message.replace(path, nova.workspace.relativizePath(path));
-  
-                let issue = new Issue();
-                issue.message = message;
-                issue.severity = IssueSeverity.Error; // IssueSeverity.Error : IssueSeverity.Warning;
-                issue.line = found[1];
-                
-                issues.push(issue);  
-                
-                resolve(issues);
+                try {
+                    const regex = /line ([0-9]+)$/g;
+                    const found = regex.exec(stdOut[1]); //stdOut[1].matchAll(regex);
+    
+                    var message = stdOut[1];
+                    message = message.replace(path, nova.workspace.relativizePath(path));
+      
+                    let issue = new Issue();
+                    issue.message = message;
+                    issue.severity = IssueSeverity.Error; // IssueSeverity.Error : IssueSeverity.Warning;
+                    issue.line = found[1];
+                    
+                    issues.push(issue);  
+                    
+                    resolve(issues);
+                } catch(e) {
+                    issues.push(e);  
+                }
             });
 
             process.start();
